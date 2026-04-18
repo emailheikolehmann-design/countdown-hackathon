@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>DAN PXTxAI Hackathon</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: url('backround.png') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.container {
+  text-align: center;
+  padding: 50px;
+  border-radius: 25px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+}
+
+h1 {
+  color: white;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.countdown {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.box {
+  background: rgba(255,255,255,0.08);
+  padding: 20px 25px;
+  border-radius: 15px;
+  min-width: 90px;
+  box-shadow: 0 0 15px rgba(0,255,255,0.2);
+}
+
+.number {
+  font-size: 40px;
+  color: #00eaff;
+  font-weight: bold;
+}
+
+.label {
+  font-size: 14px;
+  color: #ccc;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>🚀 1st DAN PXTxAI Hackathon</h1>
+
+  <div class="countdown">
+    <div class="box">
+      <div class="number" id="days"></div>
+      <div class="label">Tage</div>
+    </div>
+    <div class="box">
+      <div class="number" id="hours"></div>
+      <div class="label">Stunden</div>
+    </div>
+    <div class="box">
+      <div class="number" id="minutes"></div>
+      <div class="label">Minuten</div>
+    </div>
+    <div class="box">
+      <div class="number" id="seconds"></div>
+      <div class="label">Sekunden</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const targetDate = new Date("2026-06-09T10:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const diff = targetDate - now;
+
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff % (1000*60*60*24))/(1000*60*60));
+  const minutes = Math.floor((diff % (1000*60*60))/(1000*60));
+  const seconds = Math.floor((diff % (1000*60))/1000);
+
+  document.getElementById("days").innerText = days;
+  document.getElementById("hours").innerText = hours;
+  document.getElementById("minutes").innerText = minutes;
+  document.getElementById("seconds").innerText = seconds;
+}, 1000);
+</script>
+
+</body>
+</html>
